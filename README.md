@@ -1,253 +1,285 @@
-Sufra
+# 🍽️ Sufra
 
-Modern halal food discovery. Proof based. Item level. Community verified.
+> **Modern halal food discovery. Proof based. Item level. Community verified.**
 
-What is Sufra
+---
 
-Sufra is a halal food discovery platform built for trust. Think Zabihah + Waze. Each halal claim connects to real evidence and live community confirmations so Muslims can eat with confidence.
+## 📖 What is Sufra?
 
-Core value
+Sufra is a halal food discovery platform built for trust. Think **Zabihah + Waze**. Each halal claim connects to real evidence and live community confirmations so Muslims can eat with confidence.
 
-Proofs: certificate photos, fryer checks, receipts, short videos
+---
 
-Item level: verify menu items at a specific location
+## 🎯 Core Values
 
-Live consensus: quick alerts others confirm or deny
+- **📸 Proofs**: Certificate photos, fryer checks, receipts, short videos
+- **🍴 Item Level**: Verify menu items at a specific location  
+- **⚡ Live Consensus**: Quick alerts others confirm or deny
+- **📊 Transparent Trust Score**: Recency of proofs + agreement from verified users
 
-Transparent Trust Score: recency of proofs + agreement from verified users
+---
 
-Who it serves
+## 👥 Who It Serves
 
-Everyday Muslims who want clear halal info fast
+- **🕌 Everyday Muslims** who want clear halal info fast
+- **🔍 Power Users** who verify and moderate (Halal Scouts)
+- **🏪 Restaurant Owners** who want a visible trust badge
 
-Power users who verify and moderate (Halal Scouts)
+---
 
-Restaurant owners who want a visible trust badge
+## 📱 Product Scope
 
-Product scope
-Key screens
+### 🏠 Home / Feed
+- **Search bar**: "Find verified halal food near you…"
+- **Card list**: Photo, name, cuisine, Trust Score badge (🟢 green, 🟡 yellow, 🔴 red)
+- **Tag pills**: Halal Cert, Separate Fryer, Pending
+- **Buttons**: View, Verify
+- **Recent Verifications** strip like Waze alerts
 
-Home / Feed
+### 🗺️ Map + Results
+- **Pins**: 🟢 verified, 🟡 mixed, 🔴 disputed
+- **Click pin** opens mini card with Trust Score and proof preview
+- **Toggle** list view or map view
+- **Supports** query param `?q=`
 
-Search bar: “Find verified halal food near you…”
+### 🏪 Restaurant Detail
+- **Hero image**, name, cuisine, city
+- **Trust Score** with explanation
+- **Item verification** list (verified, pending, disputed)
+- **Proof gallery** grid
+- **Community notes**
+- **Large Upload Proof** call to action
 
-Card list: photo, name, cuisine, Trust Score badge (green, yellow, red)
+### ✅ Verification Flow
+- **Upload** image or video
+- **Choose proof type**: certificate, fryer, receipt, other
+- **Optional notes**
+- **Submit** creates a pending proof that affects score when confirmed
 
-Tag pills: Halal Cert, Separate Fryer, Pending
+### 🚨 Alerts (Waze style)
+- **Quick actions**: verified here, fryer mixed, closed
+- **Others confirm** or deny with one tap
+- **Alerts decay** over time
 
-Buttons: View, Verify
+### 👤 Profile
+- **Avatar**, bio, city
+- **Badges and points**
+- **History** of proofs and confirmations
+- **Settings**
 
-Recent Verifications strip like Waze alerts
+---
 
-Map + Results
+## 🚀 MVP Plan
 
-Pins: green verified, yellow mixed, red disputed
+### ⏰ Two Week Target
 
-Click pin opens mini card with Trust Score and proof preview
+#### 🔴 P0 (Priority 0)
+- **Pages**: Home, Map, Restaurant Detail, Verify, Profile
+- **Mock data** first, then simple API routes
+- **Search and list** filtering
+- **Upload flow** that stores proof records
+- **Trust Score function** that updates deterministically
 
-Toggle list view or map view
+#### 🟡 P1 (Priority 1)
+- **Auth**
+- **Roles** for Halal Scout and basic moderation
+- **Owner claim** flow
+- **Acceptance checks**
 
-Supports query param ?q=
+#### ✅ Acceptance Criteria
+- Search "wings" shows a verified place with a high score
+- Restaurant detail shows item statuses and proof gallery
+- Uploading a proof appears immediately and affects score
+- Dropping an alert shows up and others can confirm or deny
+- Reloading uses API data, not only client memory
 
-Restaurant Detail
+---
 
-Hero image, name, cuisine, city
+## 🛠️ Tech Stack
 
-Trust Score with explanation
-
-Item verification list (verified, pending, disputed)
-
-Proof gallery grid
-
-Community notes
-
-Large Upload Proof call to action
-
-Verification Flow
-
-Upload image or video
-
-Choose proof type: certificate, fryer, receipt, other
-
-Optional notes
-
-Submit creates a pending proof that affects score when confirmed
-
-Alerts (Waze style)
-
-Quick actions: verified here, fryer mixed, closed
-
-Others confirm or deny with one tap
-
-Alerts decay over time
-
-Profile
-
-Avatar, bio, city
-
-Badges and points
-
-History of proofs and confirmations
-
-Settings
-
-MVP plan
-
-Two week target
-
-P0
-
-Pages: Home, Map, Restaurant Detail, Verify, Profile
-
-Mock data first, then simple API routes
-
-Search and list filtering
-
-Upload flow that stores proof records
-
-Trust Score function that updates deterministically
-
-P1
-
-Auth
-
-Roles for Halal Scout and basic moderation
-
-Owner claim flow
-
-Acceptance checks
-
-Search “wings” shows a verified place with a high score
-
-Restaurant detail shows item statuses and proof gallery
-
-Uploading a proof appears immediately and affects score
-
-Dropping an alert shows up and others can confirm or deny
-
-Reloading uses API data, not only client memory
-
-Tech stack
-
-React 18
-
-Next.js 15, Pages Router
-
-Tailwind CSS
-
-PostCSS
-
-ESLint
-
-Node 18 or 20
-
-Later
-
-API routes under src/pages/api
-
-Postgres or Supabase for data
-
-S3 or Supabase Storage for media
-
-Mapbox or Google Maps for map layer
-
-Directory layout
+### Current
+- **React 18**
+- **Next.js 15** (Pages Router)
+- **Tailwind CSS**
+- **PostCSS**
+- **ESLint**
+- **Node 18** or 20
+
+### Later
+- **API routes** under `src/pages/api`
+- **Postgres** or Supabase for data
+- **S3** or Supabase Storage for media
+- **Mapbox** or Google Maps for map layer
+
+---
+
+## 📁 Directory Layout
+
+```
 src/
-  pages/
-    index.js              # Home / Feed
-    map.js                # Map + results list
-    restaurant/[id].js    # Restaurant detail
-    verify.js             # Upload proof
-    profile.js
-    api/                  # Next API routes (mock first)
-  components/
-    Navbar.jsx
-    SearchBar.jsx
-    FeedCard.jsx
-    TrustScoreBadge.jsx
-    TagPill.jsx
-    ProofUploader.jsx
-    AlertStrip.jsx
-    MapView.jsx
-  lib/
-    mockData.js
-    score.js              # Trust Score calculation
-  styles/
-    globals.css
+├── pages/
+│   ├── index.js              # Home / Feed
+│   ├── map.js                # Map + results list
+│   ├── restaurant/[id].js    # Restaurant detail
+│   ├── verify.js             # Upload proof
+│   ├── profile.js
+│   └── api/                  # Next API routes (mock first)
+├── components/
+│   ├── Navbar.jsx
+│   ├── SearchBar.jsx
+│   ├── FeedCard.jsx
+│   ├── TrustScoreBadge.jsx
+│   ├── TagPill.jsx
+│   ├── ProofUploader.jsx
+│   ├── AlertStrip.jsx
+│   └── MapView.jsx
+├── lib/
+│   ├── mockData.js
+│   └── score.js              # Trust Score calculation
+└── styles/
+    └── globals.css
+
 public/
-  assets/                 # demo images
+└── assets/                   # demo images
+```
 
-Data model draft
-User {
-  id, name, email, role: "user" | "scout" | "admin",
-  points, city, createdAt
+---
+
+## 🗄️ Data Model
+
+### User
+```typescript
+{
+  id: string
+  name: string
+  email: string
+  role: "user" | "scout" | "admin"
+  points: number
+  city: string
+  createdAt: Date
 }
+```
 
-Restaurant {
-  id, name, cuisine, city, lat, lng, heroUrl, createdAt
+### Restaurant
+```typescript
+{
+  id: string
+  name: string
+  cuisine: string
+  city: string
+  lat: number
+  lng: number
+  heroUrl: string
+  createdAt: Date
 }
+```
 
-MenuItem {
-  id, restaurantId, name
+### MenuItem
+```typescript
+{
+  id: string
+  restaurantId: string
+  name: string
 }
+```
 
-Proof {
-  id, restaurantId, menuItemId? null if general,
-  userId,
-  type: "certificate" | "fryer" | "receipt" | "video" | "other",
-  url, notes, status: "pending" | "approved" | "rejected",
-  createdAt
+### Proof
+```typescript
+{
+  id: string
+  restaurantId: string
+  menuItemId?: string | null  // null if general
+  userId: string
+  type: "certificate" | "fryer" | "receipt" | "video" | "other"
+  url: string
+  notes: string
+  status: "pending" | "approved" | "rejected"
+  createdAt: Date
 }
+```
 
-VerificationVote {
-  id, proofId, voterId, value: +1 | -1, createdAt
+### VerificationVote
+```typescript
+{
+  id: string
+  proofId: string
+  voterId: string
+  value: +1 | -1
+  createdAt: Date
 }
+```
 
-Alert {
-  id, restaurantId, userId,
-  kind: "verified" | "mixed" | "closed",
-  expiresAt, createdAt
+### Alert
+```typescript
+{
+  id: string
+  restaurantId: string
+  userId: string
+  kind: "verified" | "mixed" | "closed"
+  expiresAt: Date
+  createdAt: Date
 }
+```
 
-TrustScoreSnapshot {
-  id, restaurantId, score, componentsJson, createdAt
+### TrustScoreSnapshot
+```typescript
+{
+  id: string
+  restaurantId: string
+  score: number
+  componentsJson: object
+  createdAt: Date
 }
+```
 
+---
 
-Trust Score rule v0
+## 📊 Trust Score Rules (v0)
 
-Each approved proof is +20 up to 100
+- **Each approved proof** is +20 up to 100
+- **Proofs older than 6 months** count at 50%
+- **Net negative votes** set that proof weight to 0
+- **Active mixed alert** caps score at 70
+- **Active closed alert** sets score to 0 until cleared
 
-Proofs older than 6 months count at 50 percent
+> 💡 *The constants can change later. Keep the score explainable.*
 
-Net negative votes set that proof weight to 0
+---
 
-Active mixed alert caps score at 70
+## 🔌 API Routes
 
-Active closed alert sets score to 0 until cleared
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/restaurants?q=` | Search restaurants |
+| `GET` | `/api/restaurants/:id` | Get restaurant details |
+| `GET` | `/api/restaurants/:id/menu` | Get restaurant menu |
+| `GET` | `/api/restaurants/:id/proofs` | Get restaurant proofs |
+| `POST` | `/api/proofs` | Upload new proof |
+| `POST` | `/api/proofs/:id/vote` | Vote on proof |
+| `POST` | `/api/alerts` | Create alert |
+| `GET` | `/api/search?q=` | Global search |
 
-The constants can change later. Keep the score explainable.
+---
 
-API routes sketch
-GET  /api/restaurants?q=
-GET  /api/restaurants/:id
-GET  /api/restaurants/:id/menu
-GET  /api/restaurants/:id/proofs
-POST /api/proofs                 { restaurantId, menuItemId?, type, url, notes }
-POST /api/proofs/:id/vote        { value: 1 | -1 }
-POST /api/alerts                 { restaurantId, kind }
-GET  /api/search?q=
+## 🎨 UI Style Guide
 
-UI style
+- **Modern, clean, readable**
+- **High contrast**, lots of whitespace
+- **Status colors**: 🟢 verified, 🟡 pending/mixed, 🔴 disputed
+- **Cards** with soft shadows, rounded corners
+- **Mobile first**, responsive to desktop
 
-Modern, clean, readable
+### 🎨 Suggested Palette
+- **Deep ink green**
+- **Soft neutrals** 
+- **Single accent** (coral or purple-blue gradient)
 
-High contrast, lots of whitespace
+> ⚠️ *Do not overload color.*
 
-Status uses color clearly: green verified, yellow pending or mixed, red disputed
+---
 
-Cards with soft shadows, rounded corners
+<div align="center">
 
-Mobile first, responsive to desktop
+**Built with ❤️ for the Muslim community**
 
-Suggested palette: deep ink green, soft neutrals, and a single accent (coral or a purple-blue gradient). Do not overload color.
+</div>
